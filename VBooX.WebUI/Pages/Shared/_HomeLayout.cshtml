@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var BaseUrl = HttpContextAccessor.HttpContext.Session.GetString("BaseUrl");
+    var siteLocation = HttpContextAccessor.HttpContext.Session.GetString("siteLocation");
+
+}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <partial name="HomeFiles/_HeaderHome">
+</head>
+<body>
+    <input id="BaseUrl" type="hidden" value="@BaseUrl" />
+    <input id="siteLocation" type="hidden" value="@siteLocation" />
+    <partial name="HomeFiles/_LoaderHome" />
+    <!-- header_area_start -->
+    <partial name="HomeFiles/TopBar" />
+    <!-- header_area_start -->
+
+
+    @RenderBody()
+
+    <!-- footer area start -->
+    <partial name="HomeFiles/_FooterHome" />
+    <!-- footer area end -->
+    <!-- copyright area start -->
+    <partial name="HomeFiles/_CopyRightHome" />
+    <!-- copyright area end -->
+    <!-- back to top start -->
+    <partial name="HomeFiles/_BackToTopHome" />
+    <!-- back to top end -->
+    <!-- JS here -->
+    <partial name="HomeFiles/_ScriptsHome" />
+</body>
+</html>
